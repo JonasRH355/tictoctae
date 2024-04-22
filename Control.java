@@ -11,8 +11,11 @@ public class Control {
             jModel.setInTabuleiro(0,2,1);
             int aux = obj.nextInt();
             jModel.setInTabuleiro(0,0,aux);
+
+            System.out.print("\033[H\033[2J");
+            System.out.flush();                   // It's a terminal' clear
+
             table.showtable(jModel);
-            System.out.print(aux);
             jModel.reloadAddValTab();
 
             break;

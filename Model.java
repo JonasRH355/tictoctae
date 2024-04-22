@@ -1,8 +1,8 @@
 public class Model {
-    public int[][] table = {{2,2,2},{2,2,2},{2,2,2}};
+    public int[][] table = {{2,2,2},{2,2,2},{2,2,2}};   // The "map" where we'll play
     private int[] addValuesTab = {0,0,0,0,0,0,0,0};
 
-    protected boolean reloadAddValTab (){
+    protected boolean reloadAddValTab (){   // Function to reload the summation of columns, rows, mains diagonal ...
         int indexaux= 0;
         for(int i =0; i<3;i++){
             for(int j= 0; j<3;j++){
@@ -23,11 +23,11 @@ public class Model {
     }
     
 
-    public int getInTabuleiro(int i,int j){
+    public int getInTabuleiro(int i,int j){  // Get value to the desired position
         return this.table[i][j];
     }
 
-    protected boolean setInTabuleiro (int i, int j, int variavel){
+    protected boolean setInTabuleiro (int i, int j, int variavel){  // Set the value to the desired position
         this.table[i][j] = variavel;
         return true;
     }

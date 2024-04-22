@@ -1,6 +1,6 @@
 public class View {
 
-    public void showtable (Model jogModel) {
+    public void showtable (Model jogModel) {  // Function to show the table
         for (int i=0; i<3;i++){
             for (int j=0;j<3;j++){
                 System.out.print(XorO(jogModel, i, j));
@@ -24,7 +24,7 @@ public class View {
         
     }
 
-    private char XorO(Model jogModel, int i, int j){
+    private char XorO(Model jogModel, int i, int j){ // Function to will show what the user will see
         switch (jogModel.getInTabuleiro( i, j)) {
             case 1:
                 return 'X';

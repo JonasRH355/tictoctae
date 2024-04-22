@@ -1,13 +1,34 @@
 public class Model {
-    public int[][] tabuleiro = {{2,2,2},{2,2,2},{2,2,2}};
+    public int[][] table = {{2,2,2},{2,2,2},{2,2,2}};
+    private int[] addValuesTab = {0,0,0,0,0,0,0,0};
+
+    protected boolean reloadAddValTab (){
+        int indexaux= 0;
+        for(int i =0; i<3;i++){
+            for(int j= 0; j<3;j++){
+                addValuesTab[indexaux] += table[i][j];
+            }
+            indexaux++;
+        }
+        for(int j=0;j<3;j++){
+            for(int i=0;i<3;i++){
+                addValuesTab[indexaux] += table[i][j];
+            }
+            indexaux++;
+        }
+        
+        addValuesTab[6] = table[0][0]+table[1][1]+table[2][2];
+        addValuesTab[7] = table[2][0]+table[1][1]+table[0][2];
+        return true;
+    }
     
 
     public int getInTabuleiro(int i,int j){
-        return this.tabuleiro[i][j];
+        return this.table[i][j];
     }
 
     protected boolean setInTabuleiro (int i, int j, int variavel){
-        this.tabuleiro[i][j] = variavel;
+        this.table[i][j] = variavel;
         return true;
     }
 }

@@ -1,5 +1,6 @@
 public class Model {
     public int[][] tabuleiro = {{2,2,2},{2,2,2},{2,2,2}};
+    
 
     public int getInTabuleiro(int i,int j){
         return this.tabuleiro[i][j];

@@ -5,12 +5,14 @@ public class Main {
         Model jModel = new Model();
         View tabuleiro = new View();
 
-        tabuleiro.setInTabuleiro(jModel.tab[][],0,0,1);
-        tabuleiro.setInTabuleiro(jModel.tab,0,0,3);
+
+
+        jModel.setInTabuleiro(0,2,1);
+        jModel.setInTabuleiro(0,0,3);
        
         
 
-        tabuleiro.showtable();
+        tabuleiro.showtable(jModel);
     }
     
 }

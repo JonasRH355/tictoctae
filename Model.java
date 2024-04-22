@@ -1,12 +1,12 @@
 public class Model {
-    public int[][] tab = {{2,2,2},{2,2,2},{2,2,2}};
+    public int[][] tabuleiro = {{2,2,2},{2,2,2},{2,2,2}};
 
     public int getInTabuleiro(int i,int j){
-        return this.tab[i][j];
+        return this.tabuleiro[i][j];
     }
 
-    protected boolean setInTabuleiro ( int i, int j, int variavel){
-        this.tab[i][j] = variavel;
+    protected boolean setInTabuleiro (int i, int j, int variavel){
+        this.tabuleiro[i][j] = variavel;
         return true;
     }
 }

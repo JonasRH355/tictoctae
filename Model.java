@@ -22,7 +22,6 @@ public class Model {
         return true;
     }
     
-
     public int getInTabuleiro(int i,int j){  // Get value to the desired position
         return this.table[i][j];
     }

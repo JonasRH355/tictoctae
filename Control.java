@@ -8,9 +8,8 @@ public class Control {
     public void reloadgame(){
         while (true) {
             
-            jModel.setInTabuleiro(0,2,1);
-            int aux = obj.nextInt();
-            jModel.setInTabuleiro(0,0,aux);
+            jModel.setInTabuleiro(0,2,3);
+            inPutX();
 
             System.out.print("\033[H\033[2J");
             System.out.flush();                   // It's a terminal' clear
@@ -20,5 +19,12 @@ public class Control {
 
             break;
         }
+    }
+
+    protected void inPutX(){
+        System.out.print("Onde vai: (i,j)");
+        int i = obj.nextInt();
+        int j = obj.nextInt();
+        jModel.setInTabuleiro(i,j,1);
     }
 }

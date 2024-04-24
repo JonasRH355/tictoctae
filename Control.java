@@ -11,13 +11,12 @@ public class Control {
         System.out.print("\033[H\033[2J");
         System.out.flush();                   // It's a terminal' clear
 
-        while (loop) {
+        while (loop) {  
             System.out.print("\033[H\033[2J");
             System.out.flush();                   // It's a terminal' clear
-            table.showtable(jModel);
+            table.showtable(jModel); 
             inPutX();
             jModel.reloadAddValTab();
-
             if (endGame()) {
                 loop=false;
             }
@@ -34,8 +33,7 @@ public class Control {
 
     protected boolean endGame() {
         if(jModel._endgame() == 3){
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
+            
 
             System.out.println("You WIN!");
             return true;

@@ -3,21 +3,20 @@ import java.util.Scanner;
 public class Control {
     Model jModel = new Model();
     View table = new View();
-    Scanner obj = new Scanner(System.in);   
+    Scanner obj = new Scanner(System.in);
+    boolean loop = true;   
 
     public void reloadgame(){
-        while (true) {
-            
-            jModel.setInTabuleiro(0,2,3);
-            inPutX();
+        jModel.setInTabuleiro(0,2,3);
+        System.out.print("\033[H\033[2J");
+        System.out.flush();                   // It's a terminal' clear
 
+        while (loop) {
             System.out.print("\033[H\033[2J");
             System.out.flush();                   // It's a terminal' clear
-
             table.showtable(jModel);
+            inPutX();
             jModel.reloadAddValTab();
-
-            break;
         }
     }
 
@@ -27,4 +26,18 @@ public class Control {
         int j = obj.nextInt();
         jModel.setInTabuleiro(i,j,1);
     }
+
+    /*protected boolean endGame() {
+        if(jModel._endgame() == 3){
+            
+
+            System.out.println("You WIN!");
+            return true;
+        } else if(jModel._endgame() == 9){
+            System.out.print("You LOST!");
+            return true;
+        } else {
+            return false;
+        }
+    }*/
 }

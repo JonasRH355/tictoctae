@@ -30,4 +30,14 @@ public class Model {
         this.table[i][j] = variavel;
         return true;
     }
+
+    public int _endgame(){
+        for(int index = 0;index<8;index++){
+            if(this.addValuesTab[index] == 9 && this.addValuesTab[index]==3){
+                System.out.print(this.addValuesTab);
+                return this.addValuesTab[index];
+            }
+        }
+        return 0;
+    }
 }

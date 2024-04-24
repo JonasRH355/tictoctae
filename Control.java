@@ -17,6 +17,11 @@ public class Control {
             table.showtable(jModel);
             inPutX();
             jModel.reloadAddValTab();
+
+            if (endGame()) {
+                loop=false;
+            }
+
         }
     }
 
@@ -27,17 +32,21 @@ public class Control {
         jModel.setInTabuleiro(i,j,1);
     }
 
-    /*protected boolean endGame() {
+    protected boolean endGame() {
         if(jModel._endgame() == 3){
-            
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
 
             System.out.println("You WIN!");
             return true;
         } else if(jModel._endgame() == 9){
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
+            
             System.out.print("You LOST!");
             return true;
         } else {
             return false;
         }
-    }*/
+    }
 }

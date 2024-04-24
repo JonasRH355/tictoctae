@@ -1,7 +1,6 @@
 public class Model {
     public int[][] table = {{2,2,2},{2,2,2},{2,2,2}};   // The "map" where we'll play
     private int[] addValuesTab = {0,0,0,0,0,0,0,0};
-    public int endgamevalue;
 
     protected boolean reloadAddValTab (){   // Function to reload the summation of columns, rows, mains diagonal ...
         cleanAddValue();
@@ -55,7 +54,6 @@ public class Model {
     public int _endgame(){
         for(int index = 0;index<8;index++){
             if(addValuesTab[index] == 9 || addValuesTab[index] == 3){
-                System.out.print(addValuesTab[index]);
                 return addValuesTab[index];
             }
         }

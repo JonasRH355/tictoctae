@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class Control {
     Model jModel = new Model();
@@ -7,15 +8,13 @@ public class Control {
     boolean loop = true;   
 
     public void reloadgame(){
-        jModel.setInTabuleiro(0,2,3);
-
         while (loop) {  
             System.out.print("\033[H\033[2J");
             System.out.flush();                   // It's a terminal' clear
 
             table.showtable(jModel); 
             inPutX();
-            botInput();
+            stupidBotInput();
             jModel.reloadAddValTab();
             if (endGame()) {
                 loop=false;
@@ -59,7 +58,18 @@ public class Control {
         }
     }
 
-    protected boolean botInput(){
+    protected boolean stupidBotInput(){
+        
+        int i = 0;
+        int j = 0;
+        do{
+            Random rand = new Random();
+            i = Math.abs(rand.nextInt())%3;
+            rand = new Random();
+            j = Math.abs(rand.nextInt())%3;
+        }while(alreadyHave(i,j));
+        
+        jModel.setInTabuleiro(i,j,3);
         return true;
     }
 }

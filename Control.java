@@ -2,10 +2,10 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Control {
-    Model jModel = new Model();
-    View table = new View();
-    Scanner obj = new Scanner(System.in);
-    boolean loop = true;   
+    private Model jModel = new Model();
+    private View table = new View();
+    private Scanner obj = new Scanner(System.in);
+    private boolean loop = true;   
 
     public void reloadgame(){
         while (loop) {  
@@ -23,7 +23,7 @@ public class Control {
         }
     }
 
-    protected void inPutX(){
+    private void inPutX(){
         System.out.print("Onde vai: (i,j)");
         int i = 0;
         int j = 0;
@@ -41,7 +41,7 @@ public class Control {
         
     }
 
-    protected boolean endGame() {
+    private boolean endGame() {
         if(jModel._endgame() == 3){
             System.out.print("\033[H\033[2J");
             System.out.flush();
@@ -58,7 +58,9 @@ public class Control {
         }
     }
 
-    protected boolean stupidBotInput(){
+    // BOTS -------------------------------------------------------------------
+
+    private boolean stupidBotInput(){
         
         int i = 0;
         int j = 0;
@@ -72,4 +74,5 @@ public class Control {
         jModel.setInTabuleiro(i,j,3);
         return true;
     }
+    // END BOTS____________________________________________________________________
 }

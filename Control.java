@@ -7,14 +7,14 @@ public class Control {
     private Scanner obj = new Scanner(System.in);
     private boolean loop = true;   
 
-    public void reloadgame(){
+    public void reloadgame(){  // Loop Game Function
         while (loop) {  
             System.out.print("\033[H\033[2J");
             System.out.flush();                   // It's a terminal' clear
 
             table.showtable(jModel); 
             inPutX();
-            stupidBotInput();
+            lazyBotInput();
             jModel.reloadAddValTab();
             if (endGame()) {
                 loop=false;
@@ -23,7 +23,7 @@ public class Control {
         }
     }
 
-    private void inPutX(){
+    private void inPutX(){  // Function to input the 'X' in the square/hash
         System.out.print("Onde vai: (i,j)");
         int i = 0;
         int j = 0;
@@ -35,19 +35,28 @@ public class Control {
         jModel.setInTabuleiro(i,j,1);
     }
 
-    private boolean alreadyHave(int i, int j){
-        boolean x = (jModel.table[i][j] != 2)? true:false;
+    private boolean alreadyHave(int i, int j){  // Collision Function
+        boolean x = (jModel.getInTabuleiro(i, j) != 2)? true:false;
         return x;
         
     }
 
-    private boolean endGame() {
-        if(jModel._endgame() == 3){
+    protected int _endgame(){  // check/return who is the winner when is endgame
+        for(int index = 0;index<8;index++){
+            if(jModel.getAddValuesTab(index) == 9 || jModel.getAddValuesTab(index) == 3){
+                return jModel.getAddValuesTab(index);
+            }
+        }
+        return 0;
+    }
+
+    private boolean endGame() { // End Game situation
+        if(_endgame() == 3){
             System.out.print("\033[H\033[2J");
             System.out.flush();
             System.out.println("You WIN!");
             return true;
-        } else if(jModel._endgame() == 9){
+        } else if(_endgame() == 9){
             System.out.print("\033[H\033[2J");
             System.out.flush();
             
@@ -60,7 +69,7 @@ public class Control {
 
     // BOTS -------------------------------------------------------------------
 
-    private boolean stupidBotInput(){
+    private boolean lazyBotInput(){  // Bot that will make a random move
         
         int i = 0;
         int j = 0;
@@ -74,5 +83,14 @@ public class Control {
         jModel.setInTabuleiro(i,j,3);
         return true;
     }
+
+    private boolean midlleBotInput(){  // Bot that will be more inteligent than lazyBot and less than smartBot
+        return true;
+    }
+
+    private boolean smartBotInput(){ // SmartBot
+        return true;
+    }
+
     // END BOTS____________________________________________________________________
 }

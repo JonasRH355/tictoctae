@@ -14,12 +14,17 @@ public class Control {
 
             table.showtable(jModel); 
             inPutX();
-            lazyBotInput();
-            jModel.reloadAddValTab();
             if (endGame()) {
                 loop=false;
             }
-
+            
+            if(loop != false){
+                lazyBotInput();
+                jModel.reloadAddValTab();
+                if (endGame()) {
+                    loop=false;
+                }
+            }
         }
     }
 

@@ -57,7 +57,7 @@ public class Control {
         }
         return true;
     }
-    protected int _endgame(){  // check/return who is the winner when is endgame
+    private int _endgame(){  // check/return who is the winner when is endgame
         for(int index = 0;index<8;index++){
             if(jModel.getValuestab(index) == 3 || jModel.getValuestab(index) == 9 ){
                 return jModel.getValuestab(index);

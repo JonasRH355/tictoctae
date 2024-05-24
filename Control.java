@@ -14,15 +14,16 @@ public class Control {
 
             table.showtable(jModel); 
             inPutX();
+            jModel.reloadAddValTab();
             if (endGame()) {
-                loop=false;
+                break;
             }
             
             if(loop != false){
                 lazyBotInput();
                 jModel.reloadAddValTab();
                 if (endGame()) {
-                    loop=false;
+                    break;
                 }
             }
         }
@@ -46,10 +47,20 @@ public class Control {
         
     }
 
+    private boolean drawgame(){
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 3; j++){
+                if(!alreadyHave(i, j)){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
     protected int _endgame(){  // check/return who is the winner when is endgame
         for(int index = 0;index<8;index++){
-            if(jModel.getAddValuesTab(index) == 9 || jModel.getAddValuesTab(index) == 3){
-                return jModel.getAddValuesTab(index);
+            if(jModel.getValuestab(index) == 3 || jModel.getValuestab(index) == 9 ){
+                return jModel.getValuestab(index);
             }
         }
         return 0;
@@ -61,12 +72,20 @@ public class Control {
             System.out.flush();
             System.out.println("You WIN!");
             return true;
-        } else if(_endgame() == 9){
+        } 
+        if(_endgame() == 9){
             System.out.print("\033[H\033[2J");
             System.out.flush();
             
             System.out.print("You LOST!");
             return true;
+        } 
+        if(drawgame()){
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
+            
+            System.out.print("Draw!");    
+            return true;        
         } else {
             return false;
         }
@@ -94,6 +113,7 @@ public class Control {
     }
 
     private boolean smartBotInput(){ // SmartBot
+
         return true;
     }
 

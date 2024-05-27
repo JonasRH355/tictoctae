@@ -1,6 +1,62 @@
 public class Model {
-    private int[][] table = {{2,2,2},{2,2,2},{2,2,2}};   // The "map" where we'll play
-    private int[] Valuestab = {0,0,0,0,0,0,0,0};
+    private int table[][] = {{2,2,2},{2,2,2},{2,2,2}};   // The "map" where we'll play
+    private int[] Valuestab = {1,1,1,1,1,1,1,1};
+
+    public int reloadAddValTab (int x, int y){
+        setvaluetabone();
+        int soma = 0;
+        int indexaux = 0;
+        int lasttab[][] = {{0,0,0},{0,0,0},{0,0,0}};
+
+        for(int i =0; i<3;i++){
+            for(int j= 0; j<3;j++){
+                lasttab[i][j] = table[i][j];
+            }
+        }
+
+        lasttab[x][y]= 3;
+
+        for(int i =0; i<3;i++){
+            for(int j= 0; j<3;j++){
+                Valuestab[indexaux] *= lasttab[i][j];
+            }
+            indexaux++;
+        }
+        for(int j=0;j<3;j++){
+            for(int i=0;i<3;i++){
+                Valuestab[indexaux] *= lasttab[i][j];
+            }
+            indexaux++;
+        }
+        
+        Valuestab[6] = lasttab[0][0]*lasttab[1][1]*lasttab[2][2];
+        Valuestab[7] = lasttab[2][0]*lasttab[1][1]*lasttab[0][2];
+
+        for(int i = 0; i<Valuestab.length;i++){
+            soma += Valuestab[i];
+        }
+    
+        return soma;
+    }
+
+    private void setvaluetabone() {
+        int indexaux= 0;
+        for(int i =0; i<3;i++){
+            for(int j= 0; j<3;j++){
+                Valuestab[indexaux] = 1;
+            }
+            indexaux++;
+        }
+        for(int j=0;j<3;j++){
+            for(int i=0;i<3;i++){
+                Valuestab[indexaux] = 1;
+            }
+            indexaux++;
+        }
+        
+        Valuestab[6] = 1;
+        Valuestab[7] = 1;
+    }
 
     public boolean reloadAddValTab (){   // Function to reload the summation of columns, rows, mains diagonal ...
         cleanAddValue();
@@ -55,9 +111,4 @@ public class Model {
         return this.Valuestab[index];
     }
 
-    public void print_valuestab(){
-        for(int i = 0;i<Valuestab.length;i++){
-            System.err.println(Valuestab[i]);
-        }
-    }
 }

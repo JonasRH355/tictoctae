@@ -19,12 +19,10 @@ public class Control {
                 break;
             }
             
-            if(loop != false){
-                lazyBotInput();
-                jModel.reloadAddValTab();
-                if (endGame()) {
-                    break;
-                }
+            smartBotInput();
+            jModel.reloadAddValTab();
+            if (endGame()) {
+                break;
             }
         }
     }
@@ -84,11 +82,31 @@ public class Control {
             System.out.print("\033[H\033[2J");
             System.out.flush();
             
-            System.out.print("Draw!");    
+            System.out.print("Draw!");   
+
             return true;        
         } else {
             return false;
         }
+    }
+
+    private boolean betterposition(){
+        int better[] = {0,0,0};
+        int resol;
+        for(int i = 0 ; i < 3; i++){
+            for(int j = 0; j<3;j++){
+                if(!alreadyHave(i, j)){
+                    resol = jModel.reloadAddValTab(i,j);
+                    if(resol > better[0]){
+                        better[0] = resol;
+                        better[1] = i;
+                        better[2] = j;
+                    }
+                }
+            }
+        }
+        jModel.setInTabuleiro(better[1], better[2], 3);
+        return true;
     }
 
     // BOTS -------------------------------------------------------------------
@@ -113,7 +131,7 @@ public class Control {
     }
 
     private boolean smartBotInput(){ // SmartBot
-
+        betterposition();
         return true;
     }
 

@@ -127,6 +127,7 @@ public class Control {
     }
 
     private boolean midlleBotInput(){  // Bot that will be more inteligent than lazyBot and less than smartBot
+        betterposition();
         return true;
     }
 
